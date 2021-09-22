@@ -1,0 +1,45 @@
+Question : https://leetcode.com/problems/reshape-the-matrix/
+
+class Solution {
+public:
+    vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int newrow, int newcol) {
+        vector<vector<int>> arr(newrow, vector<int>(newcol,0));
+        vector<int> one;
+        int oldrow=mat.size(), oldcol=mat[0].size(), k=0;
+        if(newrow*newcol != oldrow*oldcol)
+        {
+            return mat;
+        }
+        if(oldrow>1)
+        {
+            for(int i=0; i<oldrow; i++)
+            {
+                for(int j=0; j<oldcol; j++)
+                {
+                    one.push_back(mat[i][j]);
+                }
+            }
+            for(int i=0; i<newrow; i++)
+            {
+                for(int j=0; j<newcol; j++)
+                {
+                    arr[i][j]=one[k];
+                    k++;
+                }
+            }
+        }
+        else
+        {
+            for(int i=0; i<newrow; i++)
+            {
+                for(int j=0; j<newcol; j++)
+                {
+                    arr[i][j]=mat[0][k];
+                    k++;
+                }
+            }
+        }
+            
+         return arr;
+    }      
+};
