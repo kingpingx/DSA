@@ -1,0 +1,41 @@
+Question : https://leetcode.com/problems/merge-sorted-array/
+
+Approach : A simple merge algorithm
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        vector<int> a;
+        for(int k=0; k<m; k++)
+        {
+            a.push_back(nums1[k]);
+        }
+        int i=0, j=0, s=0;
+        while(i<m && j<n)
+        {
+            if(a[i] < nums2[j])
+            {
+                nums1[s]=a[i];
+                i++;
+            }
+            else
+            {
+                nums1[s]=nums2[j];
+                j++;
+            }
+            s++;
+        }
+        while(i<m)
+        {
+           nums1[s]=a[i];
+           i++;
+           s++;
+        }
+         while(j<n)
+        {
+           nums1[s]=nums2[j];
+           j++;
+           s++;
+        }
+    }
+};
